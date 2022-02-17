@@ -14,17 +14,31 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  double percent = 0.9;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Center(child: CircularPercentIndicator(
-          radius: 300.0,
-          lineWidth: 10.0,
-          percent: 0.9,
-          center: Image.asset('images/100%.png', width: 200.0),
-          progressColor: lightGreen,
-        )
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text('Home', style: TextStyle(color: darkGray)),
+          centerTitle: true,
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+        ),
+        body: Row(
+          children: [
+            CircularPercentIndicator(
+              radius: 200.0,
+              lineWidth: 10.0,
+              percent: percent,
+              center: Image.asset('images/100%.png', width: 120.0),
+              progressColor: lightGreen,
+              backgroundColor: Colors.white,
+            ),
+          ],
         ),
         ),
     );
