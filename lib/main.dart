@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:home/resources.dart';
 
-
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -30,6 +28,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Row(
           children: [
+
             CircularPercentIndicator(
               radius: 200.0,
               lineWidth: 10.0,
@@ -38,6 +37,7 @@ class _MyAppState extends State<MyApp> {
               progressColor: lightGreen,
               backgroundColor: Colors.white,
             ),
+            //ListView.builder(itemCount:1, itemBuilder: (a,index),)
           ],
         ),
         ),
