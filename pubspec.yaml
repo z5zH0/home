@@ -29,11 +29,11 @@ flutter:
   assets:
     - images/
 
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter-Regular.ttf
+
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

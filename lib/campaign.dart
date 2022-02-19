@@ -6,8 +6,9 @@ class Campaign{
   int campLiked = 0;
   int campScrapped = 0;
   String campTodo = '';
+  int campPoint = 0;
 
-Campaign(String name, DateTime startDate, DateTime finishDate, bool ofCompany, int liked, int scrapped, String todo){
+Campaign(String name, DateTime startDate, DateTime finishDate, bool ofCompany, int liked, int scrapped, String todo, int point){
   campName = name;
   campStartDate = startDate;
   campFinishDate = finishDate;
@@ -15,5 +16,6 @@ Campaign(String name, DateTime startDate, DateTime finishDate, bool ofCompany, i
   campLiked = liked;
   campScrapped = scrapped;
   campTodo = todo;
+  campPoint = point;
   }
 }
