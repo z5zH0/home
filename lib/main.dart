@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:home/resources.dart';
-import 'package:home/todo.dart';
+import 'package:home/TodoListWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,7 +27,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  double percent = 80;
+  double percent = 100;
   int userPoint = 250;
 
   @override
@@ -71,7 +71,7 @@ class _HomeState extends State<Home> {
             radius: 300.0,
             lineWidth: 10.0,
             percent: percent/100,
-            center: Image.asset('images/100%.png', width: 190.0),
+            center: Image.asset('images/plant.png'),
             progressColor: lightGreen,
             backgroundColor: Colors.transparent,
           ),
@@ -86,8 +86,67 @@ class _HomeState extends State<Home> {
                 ),
           ),
     ),
-    ],
-    ),
+
+          GestureDetector(
+            onTap: ()
+            {
+              FlutterDialog();
+            },
+            child: TodoList(),
+          )
+        ],
+      ),
     );
+  }
+
+  void FlutterDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                side: BorderSide(color: deepGreen, width: 3)
+            ),
+            //Dialog Main Title
+            title: Text("TODO", style: TextStyle(
+              fontFamily: 'Inter-Regular',
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+            )),
+            //
+            content: Text('투두'),
+            actions: <Widget>[
+              TextField(
+                showCursor: false,
+
+                style: TextStyle(
+                    fontFamily: 'Inter-Regular',
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.none)
+                    ),
+                  hintText: 'Add a task...',
+                  hintStyle: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Inter-Regular',
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  filled: true,
+                  fillColor: gray,
+                  )
+                ),
+            ],
+          );
+        });
   }
 }
