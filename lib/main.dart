@@ -113,9 +113,10 @@ class _HomeState extends State<Home> {
     );
   }
 
-  void addTodo(Todo todo) {
-    setState(() {
+addTodo(Todo todo) {
+    return setState(() {
       oneTodo = todo.todoContent;
+      Text('$oneTodo');
     });
   }
 
@@ -144,7 +145,7 @@ class _HomeState extends State<Home> {
                     textInputAction: TextInputAction.go,
                     onSubmitted: (value) {
                       Todo newTodo = Todo(inputString.text, false, DateTime(0,0,0,0,0), 2);
-                      addTodo(newTodo);
+                      return addTodo(newTodo);
                     },
                     showCursor: false,
 
