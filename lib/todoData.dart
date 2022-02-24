@@ -3,12 +3,7 @@
 import 'todo.dart';
 
 class TodoData{
-  List<Todo> TodoDB =
-      [
-        Todo('Turn off all the electronics for 1 hour', false, DateTime(0), 1),
-        Todo('Go to work by bicycle', false, DateTime(0), 1),
-        Todo('Keep indoor temperature 20℃', false, DateTime(0), 1),
-      ];
+  List<Todo> TodoDB = [];
 
   int getNum(){
     return TodoDB.length;
@@ -28,5 +23,9 @@ class TodoData{
 
   int getPoint(int index) {
     return TodoDB[index].todoPoint;
+  }
+
+  void addTodo(Todo todo){
+    TodoDB.add(todo);
   }
 }

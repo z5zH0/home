@@ -4,6 +4,8 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:home/resources.dart';
 import 'package:home/TodoListWidget.dart';
 import 'todo.dart';
+import 'todoData.dart';
+import 'drawer.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,7 +32,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  double percent = 100;
+  TodoData todoData = TodoData();
+  num percent = 100;
   int userPoint = 250;
   TextEditingController inputString = TextEditingController();
   String oneTodo = '';
@@ -38,14 +41,31 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: drawer(),
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Home', style: TextStyle(color: darkGray)),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
+        leading: Builder(builder: (context){
+          return GestureDetector(
+            onTap: () => Scaffold.of(context).openDrawer(),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('images/account.png'),
+                  ),
+                    border: Border.all(color: deepGreen, width: 1),
+                    shape: BoxShape.circle,
+                  ),
+              ),
+            ),
+            );
+        }),
       ),
-
       body: Column(
         children:[
           Padding(
@@ -73,17 +93,17 @@ class _HomeState extends State<Home> {
           ),
 
           CircularPercentIndicator(
-            radius: 300.0,
+            radius: 250.0,
             lineWidth: 10.0,
             percent: percent/100,
             center: ElevatedButton(
-              child: Text('Plant your\nown tree!', textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontFamily: 'Inter-regular', fontSize: 35, fontWeight: FontWeight.bold)),
+              child: Text('Plant your\nown tree!', textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontFamily: 'Inter-regular', fontSize: 30, fontWeight: FontWeight.bold)),
             onPressed: () {
               PlantTreeDialog();
             },
             style: ElevatedButton.styleFrom(
               primary: lightGreen,
-              fixedSize: Size(300, 300),
+              fixedSize: Size(250, 250),
               shape: CircleBorder(),
             ),),
             progressColor: lightGreen,
@@ -95,7 +115,7 @@ class _HomeState extends State<Home> {
             child: Text('${percent}%',
                 style: TextStyle(
                   fontFamily: 'Inter-Regular',
-                  fontSize: 30.0,
+                  fontSize: 25.0,
                   fontWeight: FontWeight.bold,
                 ),
           ),
@@ -111,13 +131,6 @@ class _HomeState extends State<Home> {
         ],
       ),
     );
-  }
-
-addTodo(Todo todo) {
-    return setState(() {
-      oneTodo = todo.todoContent;
-      Text('$oneTodo');
-    });
   }
 
   void AddTodoDialog() {
@@ -145,7 +158,8 @@ addTodo(Todo todo) {
                     textInputAction: TextInputAction.go,
                     onSubmitted: (value) {
                       Todo newTodo = Todo(inputString.text, false, DateTime(0,0,0,0,0), 2);
-                      return addTodo(newTodo);
+                      oneTodo = newTodo.todoContent;
+                      todoData.addTodo(newTodo);
                     },
                     showCursor: false,
 
@@ -245,5 +259,4 @@ addTodo(Todo todo) {
           );
         });
   }
-
 }
