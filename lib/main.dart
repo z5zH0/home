@@ -44,26 +44,26 @@ class _HomeState extends State<Home> {
       drawer: drawer(),
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Home', style: TextStyle(color: darkGray)),
+        title: Text('Home', style: TextStyle(color: darkGrey)),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
         leading: Builder(builder: (context){
-          return GestureDetector(
-            onTap: () => Scaffold.of(context).openDrawer(),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+          return Padding(
+            padding: const EdgeInsets.all(11.0),
+            child: GestureDetector(
+              onTap: () => Scaffold.of(context).openDrawer(),
               child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('images/account.png'),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/account.png'),
                   ),
                     border: Border.all(color: deepGreen, width: 1),
                     shape: BoxShape.circle,
                   ),
               ),
-            ),
-            );
+              ),
+          );
         }),
       ),
       body: Column(
@@ -184,7 +184,7 @@ class _HomeState extends State<Home> {
                         fontWeight: FontWeight.bold,
                       ),
                       filled: true,
-                      fillColor: gray,
+                      fillColor: grey,
                       )
                     ),
                   ],
