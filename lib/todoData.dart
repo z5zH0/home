@@ -28,4 +28,8 @@ class TodoData{
   void addTodo(Todo todo){
     TodoDB.add(todo);
   }
+
+  void deleteTodo(int index){
+    TodoDB.removeAt(index);
+  }
 }
